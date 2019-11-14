@@ -20,13 +20,14 @@ class Clock {
 
 //const clock = new Clock();
 
-
+/*
 const readline = require('readline');
 
 const reader = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
+*/
 
 function addNumbers(sum, numsLeft, completionCallback) {
   if (numsLeft > 0) {
@@ -40,7 +41,6 @@ function addNumbers(sum, numsLeft, completionCallback) {
     })
   } else if (numsLeft === 0) {
     completionCallback(sum);
-    reader.close();
   };
 }
 
@@ -52,8 +52,7 @@ function askIfGreaterThan(el1, el2, callback) {
   
   reader.question(`Is ${el1} larger than ${el2}? `, (answer) => {
     status = (answer == 'yes') ? true : false;
-    callback(status);
-    
+    callback(status);  
   });
 }
 
@@ -66,7 +65,6 @@ askIfGreaterThan(1, 2, answer => {
 
 
 function innerBubbleSortLoop(arr, i, madeAnySwaps, outerBubbleSortLoop) {
-  
   if (i == arr.length - 1) {
     outerBubbleSortLoop(madeAnySwaps);
   } else if (i < arr.length - 1) {
@@ -79,11 +77,10 @@ function innerBubbleSortLoop(arr, i, madeAnySwaps, outerBubbleSortLoop) {
         console.log(`${arr}`);
         madeAnySwaps = true;
       };
-      
+
       innerBubbleSortLoop(arr, i + 1, madeAnySwaps, outerBubbleSortLoop);
     });
   };
-  
 }
 
 /*
@@ -113,3 +110,28 @@ absurdBubbleSort([3,2,1], function(arr) {
   reader.close();
 });
 */
+
+
+class Lamp {
+  constructor() {
+    this.name = "a lamp";
+  }
+}
+
+const turnOn = function() {
+  console.log("Turning on " + this.name);
+}
+
+const lamp = new Lamp();
+
+Function.prototype.myBind = function(context) {
+  return () => this.apply(context);
+}
+
+//turnOn();
+
+//const boundTurnOn = turnOn.bind(lamp);
+//const myBoundTurnOn = turnOn.myBind(lamp);
+
+//boundTurnOn();
+//myBoundTurnOn();
